@@ -20,8 +20,8 @@ try:
     DelaiAvantVague = 0
     indice_dernierZombie = 0
     indice_dernierSunflower = 0
-    zombies_par_niveaux = {1: {"zombie1": 5}, 2:{"zombie1": 5, "zombieFootball":5}, 3:{"zombieFootball":0, "zombieX": 20}, 4:{"zombie1":8, "zombieFootball":7, "zombieX":0}, 4:{"zombie1":15, "zombieFootball":15, "zombieX":0}, 5:{"zombie1":15, "zombieFootball":30, "zombieX":15, "zombieGargantuar":1}, 6:{}} #dictionnaire de la forme {niveau: {zombies:nombre} }. Permet de définir le nombre de zombies par niveaux.
-    Temps_par_niveaux = {1:600, 2:(500), 3:(100), 4:(200), 5:(100)}  #Format : {NumeroTuile[Frequence_D'apparition_Zombie]}
+    zombies_par_niveaux = {1: {"zombie1": 3}, 2:{"zombie1": 5, "zombieFootball":5}, 3:{"zombieFootball":0, "zombieX": 20}, 4:{"zombie1":8, "zombieFootball":7, "zombieX":0}, 4:{"zombie1":15, "zombieFootball":15, "zombieX":0}, 5:{"zombie1":15, "zombieFootball":30, "zombieX":15, "zombieGargantuar":1}, 6:{}} #dictionnaire de la forme {niveau: {zombies:nombre} }. Permet de définir le nombre de zombies par niveaux.
+    Temps_par_niveaux = {1:850, 2:(600), 3:(100), 4:(200), 5:(100)}  #Format : {NumeroTuile[Frequence_D'apparition_Zombie]}
     zombies_caracteristiques = {"zombie1":["zombie1", randint(1,5), 0.3, 0.5, 200, 120], "zombieFootball": ["zombieFootball", randint(1,5), 1.1, 0.2, 200, 100], "zombieGargantuar":["zombieGargantuar", 4, 0.1, 0.2, 3000, 100],  "zombieX":["zombieX", 1, 0.7, 0.7, 200, 100]}
     niveau_actuel = 1
     Perdu = False
@@ -122,7 +122,7 @@ try:
         Une fonction pour ajouter de l'argent à chaque intervalle de temps.
         """
         global compteur
-        compteur += 1+0.5*NbSunFlowers
+        compteur += 1+0.35*NbSunFlowers
         if compteur > 900: #Note : 600 tics correspondent à 10 secondes
             compteur = 0
             model.boutons["PeaShooter"].monnaie += 50
@@ -145,7 +145,7 @@ try:
                 if zombies_par_niveaux[niveau_actuel][zombie] > 0:
                     compteur1 += 1
                     DelaiAvantVague += 1 
-                    if DelaiAvantVague > 400:
+                    if (DelaiAvantVague > 400):
                         frequence += 1
                         if randint(Temps_par_niveaux[niveau_actuel]-1,Temps_par_niveaux[niveau_actuel]+4 ) < frequence: 
                             frequence = 0
@@ -209,7 +209,7 @@ try:
             if (dico_zombies != {}) or (dico_plantes != {}):
                 dico_zombies = {}
                 dico_plantes = {}
-            BoutonPerdu = Bouton("Gagne", 120,120, img6, 2)
+            BoutonPerdu = Bouton("Gagne", 120,120, img7, 2)
             model.ajouter_bouton(BoutonPerdu)
              
         view.draw()

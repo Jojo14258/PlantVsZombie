@@ -7,6 +7,8 @@ import pygame, view
 import time
 # des constantes
 STEP_SIZE = 20
+test = 0
+test += 1
 vitesse = 0.04
 PlantesActuelles = [] #Création d'une pile : La dernière plante arrivée est ajouté au visuelle (voir main)
 SunFlowersActuelles = {} #Tableau utilisé pour cumuler les boosts d'argent des sunflowers
